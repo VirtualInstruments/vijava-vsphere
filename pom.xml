@@ -1,0 +1,116 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.cloudbees</groupId>
+    <artifactId>cloudbees-oss-parent</artifactId>
+    <version>6</version>
+  </parent>
+
+  <groupId>com.cloudbees.thirdparty</groupId>
+  <artifactId>vijava</artifactId>
+  <version>5.5-beta-vi-v3</version>
+  <packaging>jar</packaging>
+  <description>Java API for accessing VMWare web services API. This project is a clone of original vijava with bugfixes, built by Virtana Inc.locally</description>
+
+  <name>VMware VI (vSphere) Java API</name>
+  <url>http://vijava.sourceforge.net/</url>
+
+  <licenses>
+    <license>
+      <name>BSD style license</name>
+      <url>http://www.opensource.org/licenses/bsd-license.php</url>
+    </license>
+  </licenses>
+
+  <!-- <scm>
+    <connection>scm:git:git@git.cloudbees.com:cloudbees/vijava.git</connection>
+    <developerConnection>scm:git:git@git.cloudbees.com:cloudbees/vijava.git</developerConnection>
+    <tag>vijava-5.5-beta</tag>
+  </scm> -->
+
+  <scm>
+    <connection>scm:git:git@github.com:VirtualInstruments/vijava-vsphere.git</connection>
+    <developerConnection>scm:git:git@github.com:VirtualInstruments/vijava-vsphere.git</developerConnection>
+    <tag>vijava-5.5-beta-vi-v3</tag>
+  </scm>
+
+  <properties>
+    <vijava-version>55b20130927</vijava-version>
+    <sf-download>http://downloads.sourceforge.net/project/vijava/vijava/VI%20Java%20API%205.5%20Beta/</sf-download>
+  </properties>
+
+<!--  <build>-->
+<!--    <plugins>-->
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-antrun-plugin</artifactId>-->
+<!--        <version>1.7</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>generate-sources</id>-->
+<!--            <phase>generate-sources</phase>-->
+<!--            <goals>-->
+<!--              <goal>run</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <target>-->
+<!--                <mkdir dir="${project.build.directory}/downloads" />-->
+<!--                <get src="${sf-download}vijava${vijava-version}.zip" dest="${project.build.directory}/downloads/vijava${vijava-version}.zip" skipexisting="true" />-->
+<!--                <get src="${sf-download}vijava${vijava-version}src.jar" dest="${project.build.directory}/downloads/vijava${vijava-version}-sources.jar" skipexisting="true" />-->
+<!--                <unzip src="${project.build.directory}/downloads/vijava${vijava-version}.zip" dest="${project.build.directory}/downloads">-->
+<!--                  <patternset>-->
+<!--                    <include name="vi*.jar" />-->
+<!--                  </patternset>-->
+<!--                </unzip>-->
+<!--              </target>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
+<!--      <plugin>-->
+<!--        <groupId>com.github.stephenc.nonmavenjar</groupId>-->
+<!--        <artifactId>non-maven-jar-maven-plugin</artifactId>-->
+<!--        <version>1.1</version>-->
+<!--        <extensions>true</extensions>-->
+<!--        <configuration>-->
+<!--          <jarFile>${project.build.directory}/downloads</jarFile>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
+<!--  </build>-->
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>com/vmware/vim25/mo/samples/**/*.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.doublecloud</groupId>
+      <artifactId>ws-util</artifactId>
+      <version>5.5</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>javax.mail-api</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+  </dependencies>
+
+</project>
